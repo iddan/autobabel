@@ -1,0 +1,12 @@
+{
+    "name": "iddan.autobabel",
+    "title": "Autobabel",
+    "description": "Transform ES6 and JSX files into ES5 automatically using Babel",
+    "homepage": "https://github.com/anIddan/autobabel",
+    "version": "1.0.0",
+    "author": "Iddan Aharonson (http://iddan.co)",
+    "license": "MIT",
+    "engines": {
+        "brackets": ">=0.24.0"
+    }
+}
