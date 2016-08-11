@@ -20,7 +20,9 @@ define(function (require, exports, module) {
 					'utf8'
 				);
 			} catch (e) {
-				brackets.getModule('widgets/Dialogs').showModalDialog(DefaultDialogs.DIALOG_ID_ERROR, "", "Unable to transform ES6 and JSX files into ES5, see the debug logs for details.");
+				var DefaultDialogs = brackets.getModule('widgets/DefaultDialogs');
+				var Dialogs = brackets.getModule('widgets/Dialogs');
+				Dialogs.showModalDialog(DefaultDialogs.DIALOG_ID_ERROR, "", "Unable to transform ES6 and JSX files into ES5, see the debug logs for details.");
 			}
 			break;
 		}
