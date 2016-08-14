@@ -14,12 +14,8 @@ define(function (require, exports, module) {
         switch (file.ext) {
         case 'jsx':
             try {
-                var dir = file.parentPath + '/js/';
-                if (!brackets.fs.existsSync(dir)){
-                    brackets.fs.mkdirSync(dir);
-                }
                 brackets.fs.writeFile(
-                    dir + file.name + '.js',
+                    file.parentPath + file.name + '.js',
                     babel.transform(file.contents, []).code,
                     'utf8'
                 );
