@@ -13,11 +13,23 @@ define(function (require, exports, module) {
         };
         switch (file.ext) {
         case 'jsx':
-            brackets.fs.writeFile(
-                file.parentPath + file.name + '.js',
-                babel.transform(file.contents, []).code,
-                'utf8'
-            );
+            try {
+                brackets.fs.writeFile(
+                    file.parentPath + file.name + '.compiled.js',
+                    babel.transform(file.contents, []).code,
+                    'utf8'
+                );
+            } catch (e) {
+                var DefaultDialogs = brackets.getModule('widgets/DefaultDialogs');
+                var Dialogs = brackets.getModule('widgets/Dialogs');
+                Dialogs.showModalDialog(DefaultDialogs.DIALOG_ID_ERROR, "", "Unable to transform ES6 and JSX files into ES5, see the debug logs for details.");
+                brackets.fs.writeFile(
+                    file.parentPath + file.name + '.js',
+                    '',
+                    'utf8'
+                );
+                throw e;
+            }
             break;
         }
     });
