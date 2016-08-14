@@ -15,7 +15,7 @@ define(function (require, exports, module) {
         case 'jsx':
             try {
                 brackets.fs.writeFile(
-                    file.parentPath + file.name + '.js',
+                    file.parentPath + file.name + '.compiled.js',
                     babel.transform(file.contents, []).code,
                     'utf8'
                 );
